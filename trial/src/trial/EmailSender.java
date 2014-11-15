@@ -15,29 +15,27 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
   //Go Patriots!!!
-  static final String from = "princetonhack";
+  static String from;
+  static String password;
   static Session session;
-
-  static {
-  		//asdf
-         // Get system properties
-         Properties properties = System.getProperties();
-
-         // Setup mail server
-         properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-         properties.setProperty("mail.smtp.auth", "true");
-         properties.setProperty("mail.smtp.port", "587");
-         properties.setProperty("mail.smtp.starttls.enable", "true");
-
-         // Get the default Session object.
-         session = Session.getInstance(properties,
-                     new javax.mail.Authenticator() {
-                         protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                             return new javax.mail.PasswordAuthentication(from, "carnegie");
-                         }
-                     });
+  
+  //creates the session
+  public static void createSession()
+  {
+	  Properties properties = System.getProperties();
+      properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+      properties.setProperty("mail.smtp.auth", "true");
+      properties.setProperty("mail.smtp.port", "587");
+      properties.setProperty("mail.smtp.starttls.enable", "true");
+      session = Session.getInstance(properties,
+              new javax.mail.Authenticator() {
+                  protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                      return new javax.mail.PasswordAuthentication(from, password);
+                  }
+              });
+      
   }
-
+  
   public static void sendEmail(String to, String emailMessage) {
      try {
         // Create a default MimeMessage object.
@@ -69,11 +67,21 @@ public class EmailSender {
       completeMessage = completeMessage + generalMessage;
       return completeMessage;
   }
+  
+  public static void setEmail(String login)
+  {
+	  from = login;
+	  System.out.println(from);
+  }
 
+  public static void setPass(String pass)
+  {
+	  password = pass;
+	  System.out.println(password);
+  }
+  
   public static void main(String [] args) 
   {
-	  	EmailSenderGUI manager = new EmailSenderGUI();
-	  	manager.createAndShowSender();
-        sendEmail("dominicxcliu@gmail.com","butts");
+	  	LoginScreen.createAndShowLogin();
   }
 }
