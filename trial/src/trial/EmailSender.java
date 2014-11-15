@@ -72,8 +72,8 @@ public class EmailSender {
 
   public static void main(String [] args) 
   {
-	  	EmailSenderGUI fuck = new EmailSenderGUI();
-	  	fuck.createAndShowGUI();
+	  	EmailSenderGUI manager = new EmailSenderGUI();
+	  	manager.createAndShowSender();
         sendEmail("dominicxcliu@gmail.com","butts");
   }
 }

@@ -7,14 +7,14 @@ public class EmailSenderGUI
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public void createAndShowGUI() {
+	public void createAndShowSender() {
         //Create and set up the window.
-        JFrame frame = new JFrame("HelloWorldSwing");
+        JFrame frame = new JFrame("Email Sender");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(100,100);
+        frame.setSize(500,100);
  
         //Add the ubiquitous "Hello World" label.
-        JLabel label = new JLabel("Hello World");
+        JLabel label = new JLabel("Hit the button to send an email(functionality not added yet)");
         frame.getContentPane().add(label);
         
         JButton btnNewButton = new JButton("New button");
